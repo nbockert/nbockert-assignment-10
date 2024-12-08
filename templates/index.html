@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image-Text Search</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Image-Text Search</h1>
+        <form method="POST" enctype="multipart/form-data">
+            <!-- Image Query -->
+            <div class="form-group">
+                <label for="image_query">Image Query:</label>
+                <input type="file" id="image_query" name="image_query" accept="image/*">
+            </div>
+
+            <!-- Text Query -->
+            <div class="form-group">
+                <label for="text_query">Text Query:</label>
+                <input type="text" id="text_query" name="text_query" placeholder="Enter a text query">
+            </div>
+
+            <!-- Hybrid Query Weight -->
+            <div class="form-group">
+                <label for="weight">Hybrid Query Weight (Text vs. Image):</label>
+                <input type="range" id="weight" name="weight" step="0.1" min="0" max="1" value="0.5">
+                <output id="weight_output">0.5</output>
+            </div>
+
+            <!-- Query Type -->
+            <div class="form-group">
+                <label for="query_type">Select Query Type:</label>
+                <select id="query_type" name="query_type">
+                    <option value="image">Image-only</option>
+                    <option value="text">Text-only</option>
+                    <option value="hybrid">Hybrid (Text + Image)</option>
+                </select>
+        </div>
+            <div class="form-group">
+            <label for="num_principle_components">Number of PCA Components (k):</label>
+            <input type="number" id="num_principle_components" name="num_principle_components" value="10" min="1" required>
+        </div>
+            <!-- Submit Button -->
+            <button type="submit">Search</button>
+        </form>
+    </div>
+
+    <script>
+        // Update weight output display
+        const weightInput = document.getElementById('weight');
+        const weightOutput = document.getElementById('weight_output');
+        weightInput.addEventListener('input', () => {
+            weightOutput.textContent = weightInput.value;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Results</title>
+    <link rel="stylesheet" href="/static/css/styles.css">
+    <style>
+        body {
+            display: block;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <a href="/">Back to Home</a>
+    <h1>Search Results</h1>
+
+    {% if results %}
+        <h2>Top 5 Similar Images</h2>
+        <div class="results-container">
+            {% for result in results %}
+                <div class="result-item">
+                    <img src="{{ url_for('static', filename='images/coco_images_resized/' + result.image_url) }}" alt="Result Image" class="result-image">
+                    <p>Similarity Score: {{ result.score }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No results found. Try modifying your query.</p>
+    {% endif %}
+
+
+</body>
+</html>
