@@ -1,0 +1,14 @@
+flask
+numpy
+scikit-learn
+scipy
+matplotlib
+sentence-transformers
+pandas
+torch
+transformers
+torchvision
+Pillow
+
+git+https://github.com/openai/CLIP.git
+# git+https://github.com/mlfoundations/open_clip.git
